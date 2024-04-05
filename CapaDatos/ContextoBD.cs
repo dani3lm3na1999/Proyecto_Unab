@@ -17,7 +17,7 @@ namespace CapaDatos
         // modifique la cadena de conexión 'ContextoBD'  en el archivo de configuración de la aplicación.
 
         public ContextoBD()
-            : base(ConfigurationManager.ConnectionStrings["ContextoBD"].ConnectionString)
+            : base("name=ContextoBD")
         {
         }
 
