@@ -16,5 +16,16 @@ namespace CapaVista
         {
             InitializeComponent();
         }
+
+        private void MnMttmProductos_Click(object sender, EventArgs e)
+        {
+            MantenimientoProductos objMttProducto = new MantenimientoProductos();
+            objMttProducto.ShowDialog();
+        }
+
+        private void MnRegistroVentas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
