@@ -117,7 +117,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 34);
             this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
+            this.button1.Text = "Agregar";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
@@ -139,7 +139,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(675, 382);
+            this.textBox4.Location = new System.Drawing.Point(675, 376);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 26);
@@ -151,7 +151,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 31);
             this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
+            this.button2.Text = "Procesar";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -160,7 +160,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 31);
             this.button3.TabIndex = 13;
-            this.button3.Text = "button3";
+            this.button3.Text = "Volver";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // RegistroVenta
