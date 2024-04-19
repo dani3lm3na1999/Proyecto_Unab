@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using CapaEntidades;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,6 +61,51 @@ namespace CapaVista
             {
                 CargarProductos();
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _productoLOG = new ProductoLOG();
+
+                int codigo = int.Parse(txtCodigo.Text);
+                int cantidad = int.Parse(txtCantidad.Text);
+
+                var producto = (Producto)productoBindingSource.Current;
+
+                if(producto != null)
+                {
+                    detalleVenta.Rows.Add(codigo, producto.Nombre, producto.PrecioUnitario,
+                        cantidad, (cantidad*producto.PrecioUnitario));
+
+                    dgvDetalleVenta.DataSource = detalleVenta;
+
+                    decimal montoTotal = 0;
+
+                    foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
+                    {
+                        montoTotal += decimal.Parse(row.Cells["SubTotal"].Value.ToString());
+                    }
+
+                    //foreach (DataRow row in detalleVenta.Rows)
+                    //{
+                    //    montoTotal += (int)row["SubTotal"];
+                    //}
+
+                    txtMonto.Text = montoTotal.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un Error", "UNAB|Chalatenango", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
