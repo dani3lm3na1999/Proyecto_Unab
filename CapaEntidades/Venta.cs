@@ -20,5 +20,10 @@ namespace CapaEntidades
 
         // propiedad de navegación
         public List<DetalleVenta> Detalles { get; set; }
+
+        public Venta()
+        {
+            Detalles = new List<DetalleVenta>();
+        }
     }
 }

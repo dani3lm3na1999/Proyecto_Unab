@@ -105,7 +105,43 @@ namespace CapaVista
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                _ventaLOG = new VentaLOG();
 
+                Venta venta = new Venta();
+
+                venta.Fecha = DateTime.Now;
+                venta.Total = decimal.Parse(txtMonto.Text);
+
+                foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
+                {
+                    var detalle = new DetalleVenta()
+                    {
+                        ProductoId = int.Parse(row.Cells["Codigo"].Value.ToString()),
+                        Precio = decimal.Parse(row.Cells["Precio"].Value.ToString()),
+                        Cantidad = int.Parse(row.Cells["Cantidad"].Value.ToString())
+                    };
+
+                    venta.Detalles.Add(detalle);
+                }
+
+                int resultado = _ventaLOG.GuardarVenta(venta);
+
+                if(resultado > 0)
+                {
+                    MessageBox.Show("Venta Guardada con Exito");
+                }
+                else
+                {
+                    MessageBox.Show("No se logro guardar la venta");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un Error", "UNAB|Chalatenango",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
