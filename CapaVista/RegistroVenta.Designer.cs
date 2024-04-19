@@ -28,28 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.cbxNombreProd = new System.Windows.Forms.ComboBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtExistencias = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.btnProcesar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ventaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,75 +93,85 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Existencias:";
             // 
-            // textBox1
+            // txtCodigo
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 4;
+            this.txtCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productoBindingSource, "ProductoId", true));
+            this.txtCodigo.Location = new System.Drawing.Point(172, 35);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(100, 26);
+            this.txtCodigo.TabIndex = 4;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
-            // comboBox1
+            // cbxNombreProd
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(463, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(312, 28);
-            this.comboBox1.TabIndex = 5;
+            this.cbxNombreProd.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxNombreProd.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxNombreProd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productoBindingSource, "Nombre", true));
+            this.cbxNombreProd.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.productoBindingSource, "ProductoId", true));
+            this.cbxNombreProd.DataSource = this.productoBindingSource;
+            this.cbxNombreProd.DisplayMember = "Nombre";
+            this.cbxNombreProd.FormattingEnabled = true;
+            this.cbxNombreProd.Location = new System.Drawing.Point(463, 33);
+            this.cbxNombreProd.Name = "cbxNombreProd";
+            this.cbxNombreProd.Size = new System.Drawing.Size(312, 28);
+            this.cbxNombreProd.TabIndex = 5;
+            this.cbxNombreProd.ValueMember = "ProductoId";
             // 
-            // textBox2
+            // txtCantidad
             // 
-            this.textBox2.Location = new System.Drawing.Point(172, 96);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 26);
-            this.textBox2.TabIndex = 6;
+            this.txtCantidad.Location = new System.Drawing.Point(172, 96);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(100, 26);
+            this.txtCantidad.TabIndex = 6;
             // 
-            // textBox3
+            // txtExistencias
             // 
-            this.textBox3.Location = new System.Drawing.Point(463, 96);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(124, 26);
-            this.textBox3.TabIndex = 7;
+            this.txtExistencias.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productoBindingSource, "Existencias", true));
+            this.txtExistencias.Location = new System.Drawing.Point(463, 96);
+            this.txtExistencias.Name = "txtExistencias";
+            this.txtExistencias.ReadOnly = true;
+            this.txtExistencias.Size = new System.Drawing.Size(124, 26);
+            this.txtExistencias.TabIndex = 7;
             // 
-            // button1
+            // btnAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(700, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregar.Location = new System.Drawing.Point(700, 99);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 34);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvDetalleVenta
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalleVenta.AllowUserToAddRows = false;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Nombre,
             this.Precio,
             this.Cantidad,
             this.SubTotal});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 154);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(743, 193);
-            this.dataGridView1.TabIndex = 9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvDetalleVenta.Location = new System.Drawing.Point(32, 154);
+            this.dgvDetalleVenta.Name = "dgvDetalleVenta";
+            this.dgvDetalleVenta.Size = new System.Drawing.Size(743, 193);
+            this.dgvDetalleVenta.TabIndex = 9;
             // 
             // label5
             // 
@@ -167,40 +182,51 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Monto Total:";
             // 
-            // textBox4
+            // txtMonto
             // 
-            this.textBox4.Location = new System.Drawing.Point(675, 384);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 26);
-            this.textBox4.TabIndex = 11;
+            this.txtMonto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaBindingSource, "Total", true));
+            this.txtMonto.Location = new System.Drawing.Point(675, 384);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.ReadOnly = true;
+            this.txtMonto.Size = new System.Drawing.Size(100, 26);
+            this.txtMonto.TabIndex = 11;
             // 
-            // button2
+            // btnProcesar
             // 
-            this.button2.Location = new System.Drawing.Point(13, 440);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 31);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Procesar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnProcesar.Location = new System.Drawing.Point(13, 440);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(75, 31);
+            this.btnProcesar.TabIndex = 12;
+            this.btnProcesar.Text = "Procesar";
+            this.btnProcesar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnVolver
             // 
-            this.button3.Location = new System.Drawing.Point(700, 440);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 31);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnVolver.Location = new System.Drawing.Point(700, 440);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 31);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(CapaEntidades.Producto);
+            // 
+            // ventaBindingSource
+            // 
+            this.ventaBindingSource.DataSource = typeof(CapaEntidades.Venta);
             // 
             // Codigo
             // 
+            this.Codigo.DataPropertyName = "Codigo";
             this.Codigo.HeaderText = "Código";
             this.Codigo.Name = "Codigo";
             this.Codigo.ReadOnly = true;
             // 
             // Nombre
             // 
+            this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
@@ -208,17 +234,20 @@
             // 
             // Precio
             // 
+            this.Precio.DataPropertyName = "Precio";
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             // 
             // Cantidad
             // 
+            this.Cantidad.DataPropertyName = "Cantidad";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             // 
             // SubTotal
             // 
+            this.SubTotal.DataPropertyName = "SubTotal";
             this.SubTotal.HeaderText = "Sub Total";
             this.SubTotal.Name = "SubTotal";
             this.SubTotal.ReadOnly = true;
@@ -228,16 +257,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 483);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnProcesar);
+            this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dgvDetalleVenta);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.txtExistencias);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.cbxNombreProd);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -245,8 +274,11 @@
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RegistroVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tienda | Registro Venta";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,16 +290,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.ComboBox cbxNombreProd;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtExistencias;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.DataGridView dgvDetalleVenta;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.Button btnProcesar;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.BindingSource productoBindingSource;
+        private System.Windows.Forms.BindingSource ventaBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;

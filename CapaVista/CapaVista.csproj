@@ -104,7 +104,9 @@
       <DependentUpon>RegistroVenta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CapaEntidades.DetalleVenta.datasource" />
     <None Include="Properties\DataSources\CapaEntidades.Producto.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.Venta.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

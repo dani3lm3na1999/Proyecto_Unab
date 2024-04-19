@@ -12,11 +12,18 @@ namespace CapaLogica
     {
         ProductoDAL _productoDAL;
 
-        public int GuardarProducto(Producto producto, int id = 0, bool esActualizacion = false)
+        public int GuardarProducto(Producto producto)
         {
             _productoDAL = new ProductoDAL();
 
-            return _productoDAL.Guardar(producto, id, esActualizacion);
+            return _productoDAL.Guardar(producto);
+        }
+
+        public Producto ObtenerProductoPorId(int codigo)
+        {
+            _productoDAL = new ProductoDAL();
+
+            return _productoDAL.LeerPorId(codigo);
         }
 
         public List<Producto> ObtenerProductos()
