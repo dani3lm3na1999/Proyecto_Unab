@@ -26,6 +26,13 @@ namespace CapaLogica
             return _productoDAL.LeerPorId(codigo);
         }
 
+        public int ActualizarProducto(Producto producto, int id)
+        {
+            _productoDAL = new ProductoDAL();
+
+            return _productoDAL.Guardar(producto, id, true);
+        }
+
         public List<Producto> ObtenerProductos()
         {
             _productoDAL = new ProductoDAL();

@@ -56,19 +56,7 @@ namespace CapaVista
 
                     dgvDetalleVenta.DataSource = detalleVenta;
 
-                    decimal montoTotal = 0;
-
-                    foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
-                    {
-                        montoTotal += decimal.Parse(row.Cells["SubTotal"].Value.ToString());
-                    }
-
-                    //foreach (DataRow row in detalleVenta.Rows)
-                    //{
-                    //    montoTotal += (int)row["SubTotal"];
-                    //}
-
-                    txtMonto.Text = montoTotal.ToString();
+                    CalcularMontoTotal();
                 }
             }
             catch (Exception)
@@ -85,7 +73,7 @@ namespace CapaVista
                 _ventaLOG = new VentaLOG();
 
                 Venta venta = new Venta();
-
+                 
                 venta.Fecha = DateTime.Now;
                 venta.Total = decimal.Parse(txtMonto.Text);
 
@@ -149,6 +137,56 @@ namespace CapaVista
             {
                 CargarProductos();
             }
+        }
+
+        private void dgvDetalleVenta_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                {
+                    bool precioValido = decimal.TryParse(dgvDetalleVenta.Rows[e.RowIndex].Cells["Precio"].Value.ToString(), out decimal precio);
+                    int cantidad = int.Parse(dgvDetalleVenta.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString());
+
+                    if (precioValido && cantidad > 0)
+                    {
+                        decimal SubTotal = precio * cantidad;
+                        dgvDetalleVenta.Rows[e.RowIndex].Cells["SubTotal"].Value = SubTotal;
+
+                        CalcularMontoTotal();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe ingresar un precio valido");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un error");
+            }
+        }
+
+        private void CalcularMontoTotal()
+        {
+            decimal montoTotal = 0;
+
+            foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
+            {
+                montoTotal += decimal.Parse(row.Cells["SubTotal"].Value.ToString());
+            }
+
+            //foreach (DataRow row in detalleVenta.Rows)
+            //{
+            //    montoTotal += (int)row["SubTotal"];
+            //}
+
+            txtMonto.Text = montoTotal.ToString();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
